@@ -11,7 +11,7 @@ import cookieParser from "cookie-parser";
 
 const app = express();
 dotenv.config();
-/ db
+// db
 
 try {
   await mongoose.connect(process.env.MONGO);
