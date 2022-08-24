@@ -8,19 +8,18 @@ import authRoutes from "./routes/auth.js";
 import cookieParser from "cookie-parser";
 
 
-const app = express();
-dotenv.config();
+/ db
 
-const connect = () => {
-  mongoose
-    .connect(process.env.MONGO)
-    .then(() => {
-      console.log("Connected to DB");
-    })
-    .catch((err) => {
-      throw err;
-    });
-};
+try {
+  await mongoose.connect(process.env.MONGO);
+  console.log("Connected to mongoDB.");
+} catch (error) {
+  throw error;
+}
+
+mongoose.connection.on("disconnected", () => {
+  console.log("mongoDB disconnected!");
+});
 
 //middlewares
 app.use(cookieParser())
