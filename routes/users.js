@@ -3,6 +3,7 @@ import {
   update,
   deleteUser,
   getUser,
+  getAllUser,
   subscribe,
   unsubscribe,
   like,
@@ -20,6 +21,9 @@ router.delete("/:id", verifyToken, deleteUser);
 
 //get a user
 router.get("/find/:id", getUser);
+
+//get all users
+router.get("/find/", getAllUser);
 
 //subscribe a user
 router.put("/sub/:id", verifyToken, subscribe);
