@@ -43,6 +43,15 @@ export const getUser = async (req, res, next) => {
   }
 };
 
+export const getAllUser = async (req, res, next) => {
+  try {
+    const user = await User.find();
+    res.status(200).json(user);
+  } catch (err) {
+    next(err);
+  }
+};
+
 export const subscribe = async (req, res, next) => {
   try {
     await User.findByIdAndUpdate(req.user.id, {
